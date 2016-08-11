@@ -25,33 +25,15 @@ int replay = -1;
 int main(int argc, const char * argv[]) {
     
     printf("THE TREASURE OF THE IRON YARD! A CHOOSE-YOUR-OWN-ADVENTURE STORY\n\n");
-
+    
     game();
-    printf("Would you like to try THE TREASURE OF THE IRON YARD! again? (1=Y/2=N)\n\n");
-    fpurge(stdin);
     
-    while (replay < 1 || replay >= 3) {
-        fpurge(stdin);
-        error = scanf("%d", &replay);
-        if (error != 1 || replay < 1 || replay >= 3 ) {
-            printf("Please enter 1 or 2: \n\n");
-            replay = -1;
-        }
-    }
     if (replay == 1) {
-        
         game();
-    }
-    
-    if (replay == 2) {
-    
+    } else {
         return 0;
-    
-    
     }
 }
-
-
 
 void roomNumberOne() {
     printf("\nYou walk into Room 1 and see that it looks like a typical hotel room with a bed, a dresser, a closet, and a bathroom.\n\n");
@@ -206,6 +188,18 @@ void game() {
             break;
         }
     }
-    
+    printf("Would you like to try THE TREASURE OF THE IRON YARD! again? (1=Y/2=N)\n\n");
+    fpurge(stdin);
+    while (replay < 1 || replay >= 3) {
+        fpurge(stdin);
+        error = scanf("%d", &replay);
+        if (error != 1 || replay < 1 || replay >= 3 ) {
+            printf("Please enter 1 or 2: \n\n");
+            replay = -1;
+        }
+        if (replay == 1) {
+            game();
+        }
         
     }
+}
