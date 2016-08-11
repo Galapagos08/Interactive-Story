@@ -27,13 +27,21 @@ int main(int argc, const char * argv[]) {
     printf("THE TREASURE OF THE IRON YARD! A CHOOSE-YOUR-OWN-ADVENTURE STORY\n\n");
 
     game();
+    
     if (replay == 1) {
+        
         game();
     }
+    
     if (replay == 2) {
+    
         return 0;
+    
+    
     }
 }
+
+
 
 void roomNumberOne() {
     printf("\nYou walk into Room 1 and see that it looks like a typical hotel room with a bed, a dresser, a closet, and a bathroom.\n\n");
