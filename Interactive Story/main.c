@@ -18,22 +18,22 @@ void roomNumberFive();
 void roomNumberSix();
 void anotherLockedDoor();
 void intro();
-void game();
+int game();
 int error = -1;
-int replay = -1;
 
 int main(int argc, const char * argv[]) {
     
     printf("THE TREASURE OF THE IRON YARD! A CHOOSE-YOUR-OWN-ADVENTURE STORY\n\n");
+    int replay = 1;
     
-    game();
+    while (replay == 1) {
+        replay = game();
+    };
     
-    if (replay == 1) {
-        game();
-    } else {
-        return 0;
-    }
+    // this creates an infinite loop if you select "1"
+    return 0;
 }
+
 
 void roomNumberOne() {
     printf("\nYou walk into Room 1 and see that it looks like a typical hotel room with a bed, a dresser, a closet, and a bathroom.\n\n");
@@ -151,7 +151,7 @@ void anotherLockedDoor() {
     printf("\nThe door is locked. You decide to try the door to Room 5.\n");
     roomNumberFive();
 }
-void game() {
+int game() {
     printf("\nYou are in a hotel with a lobby on the main floor where you are standing and six rooms numbered 1 through 6 on the second floor.\n\nInside one of the rooms, you may be able to find the fabled Treasure of the Iron Yard! But you must search for it. You climb the stairs to the second floor landing which wraps around the second floor and overlooks the first floor lobby.\n\nWhich room would you like to search first? (Type a number from 1 to 6): \n\n");
     int choice = -1;
     while (choice < 1 || choice >= 7) {
@@ -189,17 +189,14 @@ void game() {
         }
     }
     printf("Would you like to try THE TREASURE OF THE IRON YARD! again? (1=Y/2=N)\n\n");
+    int keepPlaying = 9;
     fpurge(stdin);
-    while (replay < 1 || replay >= 3) {
-        fpurge(stdin);
-        error = scanf("%d", &replay);
-        if (error != 1 || replay < 1 || replay >= 3 ) {
+    while (keepPlaying < 1 || keepPlaying >= 3) {
+        error = scanf("%d", &keepPlaying);
+        if (error != 1 || keepPlaying < 1 || keepPlaying >= 3 ) {
             printf("Please enter 1 or 2: \n\n");
-            replay = -1;
-        }
-        if (replay == 1) {
-            game();
         }
         
     }
+    return keepPlaying;
 }
